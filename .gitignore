@@ -1,0 +1,15 @@
+# Environnement
+.env
+node_modules/
+
+# Fichiers générés
+drive_listing.csv
+token.json
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS
+.DS_Store

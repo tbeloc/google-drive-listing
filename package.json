@@ -1,0 +1,14 @@
+{
+  "name": "google-drive-listing",
+  "version": "1.0.0",
+  "description": "Script pour lister les fichiers, dossiers et permissions de Google Drive",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "googleapis": "^129.0.0",
+    "csv-writer": "^1.6.0",
+    "dotenv": "^16.3.1"
+  }
+}
