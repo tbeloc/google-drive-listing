@@ -1,19 +1,27 @@
-# Google Drive Listing Script
+# Google Drive Listing
 
-Ce script permet de lister tous les fichiers, dossiers et leurs permissions dans Google Drive pour faciliter la migration vers les Drives partagés.
+Application permettant de lister et d'analyser les fichiers, dossiers et permissions de Google Drive. Inclut une interface utilisateur React moderne et un backend Node.js.
 
 ## Fonctionnalités
 
 - Liste récursive des fichiers et dossiers
 - Extraction des permissions (lecture, écriture, commentaire)
 - Identification des partages externes
-- Export au format CSV avec les informations suivantes :
-  - Chemin du fichier/dossier
-  - Type (Dossier/Fichier)
-  - Propriétaire
-  - Permissions
-  - Partage externe
-  - Date de dernière modification
+- Interface utilisateur moderne avec Material-UI
+- Export au format CSV
+
+## Technologies Utilisées
+
+- **Frontend**:
+  - React 18
+  - Material-UI
+  - React Query
+  - Axios
+
+- **Backend**:
+  - Node.js
+  - Google Drive API
+  - CSV Writer
 
 ## Prérequis
 
@@ -23,42 +31,73 @@ Ce script permet de lister tous les fichiers, dossiers et leurs permissions dans
 
 ## Installation
 
-1. Clonez ce dépôt
-2. Installez les dépendances :
+1. Clonez ce dépôt :
+   ```bash
+   git clone https://github.com/tbeloc/google-drive-listing.git
+   cd google-drive-listing
+   ```
+
+2. Installez les dépendances du backend :
    ```bash
    npm install
    ```
-3. Copiez le fichier `.env.example` vers `.env` :
+
+3. Installez les dépendances du frontend :
+   ```bash
+   cd frontend
+   npm install
+   ```
+
+4. Configurez les variables d'environnement :
    ```bash
    cp .env.example .env
+   # Éditez .env avec vos identifiants Google
    ```
-4. Configurez vos identifiants Google dans le fichier `.env`
 
-## Configuration Google Cloud
+## Démarrage
 
-1. Allez sur [Google Cloud Console](https://console.cloud.google.com)
-2. Créez un nouveau projet ou sélectionnez un projet existant
-3. Activez l'API Google Drive
-4. Créez des identifiants OAuth 2.0
-5. Ajoutez l'URI de redirection : `http://localhost:3000/oauth2callback`
-6. Copiez le Client ID et le Client Secret dans votre fichier `.env`
-
-## Utilisation
-
-1. Lancez le script :
+1. Démarrez le backend :
    ```bash
    npm start
    ```
-2. Suivez le lien d'authentification qui s'affiche dans la console
-3. Autorisez l'application à accéder à votre Google Drive
-4. Le script générera un fichier `drive_listing.csv` avec toutes les informations
 
-## Format du fichier de sortie
+2. Démarrez le frontend :
+   ```bash
+   cd frontend
+   npm run dev
+   ```
 
-Le fichier CSV généré contient les colonnes suivantes :
-- Chemin : chemin complet du fichier/dossier
-- Type : Dossier ou Fichier
-- Propriétaire : adresse email du propriétaire
-- Permissions : liste des permissions (email et rôle)
-- Partage Externe : Oui/Non
-- Dernière Modification : date de dernière modification
+3. Ouvrez votre navigateur sur `http://localhost:5173`
+
+## Format des Données
+
+Le fichier CSV généré contient :
+- Chemin complet du fichier/dossier
+- Type (Dossier/Fichier)
+- Propriétaire (email)
+- Permissions détaillées
+- Statut du partage externe
+- Date de dernière modification
+
+## Sécurité
+
+- Authentification sécurisée via OAuth 2.0
+- Tokens stockés localement
+- Accès en lecture seule à Google Drive
+
+## Licence
+
+Ce projet est sous licence [GPL-3.0](LICENSE)
+
+## Contribution
+
+Les contributions sont les bienvenues ! N'hésitez pas à :
+1. Fork le projet
+2. Créer une branche pour votre fonctionnalité
+3. Commiter vos changements
+4. Pousser vers la branche
+5. Ouvrir une Pull Request
+
+## Changelog
+
+Voir [CHANGELOG.md](CHANGELOG.md) pour l'historique des modifications.
