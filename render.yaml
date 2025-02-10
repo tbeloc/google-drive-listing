@@ -1,0 +1,24 @@
+services:
+  # Service Backend
+  - type: web
+    name: google-drive-listing-api
+    env: docker
+    dockerfilePath: ./backend.Dockerfile
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: CLIENT_ID
+        sync: false
+      - key: CLIENT_SECRET
+        sync: false
+      - key: REDIRECT_URI
+        sync: false
+
+  # Service Frontend
+  - type: web
+    name: google-drive-listing-web
+    env: docker
+    dockerfilePath: ./frontend/Dockerfile
+    envVars:
+      - key: VITE_API_URL
+        value: https://google-drive-listing-api.onrender.com

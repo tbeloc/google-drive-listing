@@ -101,3 +101,51 @@ Les contributions sont les bienvenues ! N'hésitez pas à :
 ## Changelog
 
 Voir [CHANGELOG.md](CHANGELOG.md) pour l'historique des modifications.
+
+## 🐳 Docker
+
+### Développement Local avec Docker
+
+1. Construire et démarrer les conteneurs :
+   ```bash
+   docker-compose up --build
+   ```
+
+2. L'application sera disponible sur :
+   - Frontend : http://localhost
+   - Backend : http://localhost:3000
+
+### Images Docker Individuelles
+
+Backend :
+```bash
+docker build -t google-drive-listing-backend -f backend.Dockerfile .
+docker run -p 3000:3000 --env-file .env google-drive-listing-backend
+```
+
+Frontend :
+```bash
+cd frontend
+docker build -t google-drive-listing-frontend .
+docker run -p 80:80 google-drive-listing-frontend
+```
+
+## 🚀 Déploiement sur Render
+
+1. Créez un compte sur [Render](https://render.com)
+
+2. Connectez votre dépôt GitHub
+
+3. Créez un nouveau "Web Service" pour le backend :
+   - Sélectionnez le dépôt
+   - Choisissez la branche `main`
+   - Sélectionnez "Docker" comme environnement
+   - Utilisez le chemin `backend.Dockerfile`
+   - Configurez les variables d'environnement dans Render
+
+4. Créez un nouveau "Web Service" pour le frontend :
+   - Même procédure que pour le backend
+   - Utilisez le chemin `frontend/Dockerfile`
+   - Définissez `VITE_API_URL` avec l'URL du backend
+
+5. Le déploiement se fera automatiquement à chaque push sur la branche main
